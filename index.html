@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="轻舟任务仪表板 - 高效管理您的日常任务和项目进度">
+  <meta name="theme-color" content="#1e3c72">
+  <title>轻舟 · 任务仪表板</title>
+  <!-- 原生 HTML + CSS，无外部库 -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- 跳过导航链接，提升无障碍体验 -->
+    <a href="#main-content" class="skip-to-content">跳转到主要内容</a>
+    
+    <!-- 顶部区域：包含标题、搜索框、按钮 -->
+    <header class="app-header" role="banner">
+      <div class="header-left">
+        <h1 class="app-title">
+          <span aria-hidden="true">⛵</span>
+          <span>轻舟任务</span>
+        </h1>
+      </div>
+      <div class="header-right">
+        <form class="search-form" role="search" aria-label="站内搜索">
+          <div class="search-wrapper">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <label for="search-input" class="visually-hidden">搜索</label>
+            <input 
+              type="search" 
+              id="search-input"
+              class="search-input" 
+              placeholder="搜索任务、项目或文档…" 
+              aria-label="站内搜索"
+              autocomplete="off"
+            >
+          </div>
+        </form>
+        <button class="btn-primary" type="button" aria-label="创建新任务">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>新建任务</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 导航区域：顶部下方一排导航，三项，含选中/悬停样式 -->
+    <nav class="app-nav" aria-label="主导航菜单">
+      <ul class="nav-list" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a href="#" class="nav-link active" aria-current="page" role="tab" aria-selected="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#" class="nav-link" role="tab" aria-selected="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>My Tasks</span>
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#" class="nav-link" role="tab" aria-selected="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 主内容区：使用 main 标签，包含数据卡片区 + 任务列表区 + 附加模块(最近活动) -->
+    <main id="main-content" class="app-main" tabindex="-1">
+      <!-- 使用 grid 实现两列布局 (卡片区占一列，附加信息占另一列) 移动端自适应堆叠 -->
+      <div class="main-grid">
+        <!-- 左栏：数据卡片区 + 任务列表区 -->
+        <div class="left-column">
+          <!-- A. 数据卡片区 (至少2张卡片) -->
+          <section class="cards-section" aria-labelledby="cards-heading">
+            <h2 id="cards-heading" class="visually-hidden">数据概览</h2>
+            <div class="cards-container">
+              <article class="info-card card-today">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">📋</span>
+                  <h3>今日待办</h3>
+                </div>
+                <p class="card-number" aria-label="8个待办任务">8</p>
+                <p class="card-meta">剩余 · 截止今晚</p>
+                <div class="card-progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="今日任务完成进度">
+                  <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+                <span class="card-footnote">已完成 15 / 23</span>
+              </article>
+              
+              <article class="info-card card-done">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">✅</span>
+                  <h3>已完成任务</h3>
+                </div>
+                <p class="card-number" aria-label="42个已完成任务">42</p>
+                <p class="card-meta">本周完成 +12</p>
+                <div class="card-progress" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="目标完成率">
+                  <div class="progress-bar" style="width: 80%; background-color: #2e7d32;"></div>
+                </div>
+                <span class="card-footnote">目标完成率 80%</span>
+              </article>
+              
+              <article class="info-card card-projects">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">📁</span>
+                  <h3>进行中项目</h3>
+                </div>
+                <p class="card-number" aria-label="5个活跃项目">5</p>
+                <p class="card-meta">活跃项目</p>
+                <div class="project-tags">
+                  <span>设计</span>
+                  <span>前端</span>
+                  <span>后端</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- B. 任务列表区 (至少4条任务，含名称、截止日期、状态) -->
+          <section class="task-section" aria-labelledby="tasks-heading">
+            <div class="section-header">
+              <h2 id="tasks-heading">📌 最近任务</h2>
+              <a href="#" class="view-all-link" aria-label="查看所有任务">查看全部 <span aria-hidden="true">&rarr;</span></a>
+            </div>
+            <div class="task-list" role="list" aria-label="任务列表">
+              <!-- 任务条目 1 —— 进行中 -->
+              <article class="task-item" role="listitem">
+                <div class="task-info">
+                  <h3 class="task-name">编写项目周报</h3>
+                  <time class="task-date" datetime="2026-04-18">📅 2026-04-18</time>
+                </div>
+                <div class="task-status">
+                  <span class="status-badge status-progress" role="status">进行中</span>
+                </div>
+              </article>
+              
+              <!-- 任务条目 2 —— 已完成 -->
+              <article class="task-item" role="listitem">
+                <div class="task-info">
+                  <h3 class="task-name">更新仪表板UI设计</h3>
+                  <time class="task-date" datetime="2026-04-17">📅 2026-04-17</time>
+                </div>
+                <div class="task-status">
+                  <span class="status-badge status-done" role="status">已完成</span>
+                </div>
+              </article>
+              
+              <!-- 任务条目 3 —— 进行中 -->
+              <article class="task-item" role="listitem">
+                <div class="task-info">
+                  <h3 class="task-name">API 接口联调测试</h3>
+                  <time class="task-date" datetime="2026-04-19">📅 2026-04-19</time>
+                </div>
+                <div class="task-status">
+                  <span class="status-badge status-progress" role="status">进行中</span>
+                </div>
+              </article>
+              
+              <!-- 任务条目 4 —— 进行中 -->
+              <article class="task-item" role="listitem">
+                <div class="task-info">
+                  <h3 class="task-name">代码审查 & 重构</h3>
+                  <time class="task-date" datetime="2026-04-20">📅 2026-04-20</time>
+                </div>
+                <div class="task-status">
+                  <span class="status-badge status-progress" role="status">进行中</span>
+                </div>
+              </article>
+              
+              <!-- 任务条目 5 —— 已完成 -->
+              <article class="task-item" role="listitem">
+                <div class="task-info">
+                  <h3 class="task-name">准备需求评审会议</h3>
+                  <time class="task-date" datetime="2026-04-16">📅 2026-04-16</time>
+                </div>
+                <div class="task-status">
+                  <span class="status-badge status-done" role="status">已完成</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <!-- 右栏：附加信息模块 —— "最近活动" -->
+        <aside class="right-column" aria-label="附加信息">
+          <section class="activity-card" aria-labelledby="activity-heading">
+            <div class="section-header">
+              <h2 id="activity-heading">🕒 最近活动</h2>
+              <span class="activity-badge" role="status">实时</span>
+            </div>
+            <ul class="activity-feed" aria-label="活动动态">
+              <li class="activity-item">
+                <span class="activity-icon" aria-hidden="true">👤</span>
+                <div class="activity-content">
+                  <p><strong>张明</strong> 完成了任务 <em>"更新仪表板UI"</em></p>
+                  <time class="activity-time" datetime="PT10M">10分钟前</time>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-icon" aria-hidden="true">📎</span>
+                <div class="activity-content">
+                  <p><strong>李悦</strong> 上传了设计稿 <em>"v2.0 主页"</em></p>
+                  <time class="activity-time" datetime="PT32M">32分钟前</time>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-icon" aria-hidden="true">✏️</span>
+                <div class="activity-content">
+                  <p><strong>王梓</strong> 将任务 <em>"API联调"</em> 标记为进行中</p>
+                  <time class="activity-time" datetime="PT1H">1小时前</time>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-icon" aria-hidden="true">🔔</span>
+                <div class="activity-content">
+                  <p><strong>系统</strong> 提醒：明日有3项任务到期</p>
+                  <time class="activity-time" datetime="PT2H">2小时前</time>
+                </div>
+              </li>
+            </ul>
+          </section>
+          
+          <!-- 团队成员模块 -->
+          <section class="team-card" aria-labelledby="team-heading">
+            <h3 id="team-heading" class="team-title">
+              <span aria-hidden="true">👥</span>
+              <span>团队成员</span>
+            </h3>
+            <div class="team-avatars" role="list" aria-label="团队成员列表">
+              <span class="avatar" role="listitem" aria-label="张">张</span>
+              <span class="avatar" role="listitem" aria-label="李">李</span>
+              <span class="avatar" role="listitem" aria-label="王">王</span>
+              <span class="avatar" role="listitem" aria-label="陈">陈</span>
+              <span class="avatar" role="listitem" aria-label="还有3位成员">+3</span>
+            </div>
+            <p class="team-status">5人在线 · 设计/前端/后端</p>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="app-footer" role="contentinfo">
+      <p>© 2026 轻舟任务 · 简洁仪表板</p>
+    </footer>
+  </div>
+</body>
+</html>
